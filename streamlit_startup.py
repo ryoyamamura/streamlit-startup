@@ -71,7 +71,7 @@ import pandas as pd
 #st.map(df2)
 
 ###画像を読み込む
-img = Image.open('IMG_0262.JPG')
+#img = Image.open('IMG_0262.JPG')
 
 ###画像を表示
 ###use_column_widthはページ幅に合わせるか否か
