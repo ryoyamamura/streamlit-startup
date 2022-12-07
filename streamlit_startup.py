@@ -18,10 +18,10 @@ st.title('streamlit超入門')
 ###文字を入力
 #st.write('DataFrame')
 
-df = pd.DataFrame({
-    '1列目':[1, 2, 3, 4],
-    '2列目':[10, 20, 30, 40]
-                  })
+#df = pd.DataFrame({
+#    '1列目':[1, 2, 3, 4],
+#    '2列目':[10, 20, 30, 40]
+#                  })
 
 ###dataframe関数でデータフレームを表示
 ###write関数ではできない表のサイズ調整等が可能
@@ -49,10 +49,10 @@ import pandas as pd
 """
 
 ###(20行×3列）の乱数のデータ表を作成
-df1 = pd.DataFrame(
-    np.random.rand(20,3),
-    columns=["a", "b", "c"]
-    )
+#df1 = pd.DataFrame(
+#    np.random.rand(20,3),
+#    columns=["a", "b", "c"]
+#    )
 
 ###グラフを作成＆可視化
 #st.area_chart(df1)
@@ -62,10 +62,10 @@ df1 = pd.DataFrame(
 ###(100行×2列）の乱数のデータ表を作成
 ###新宿付近は緯度35.69度、経度139.70
 ###35.69、139.70を中心とした乱数表に変換　乱数の大きさも50で割って小さくする
-df2 = pd.DataFrame(
-    np.random.rand(100,2)/[50,50] + [35.69, 139.70],
-    columns=["lat", "lon"]
-    )
+#df2 = pd.DataFrame(
+#    np.random.rand(100,2)/[50,50] + [35.69, 139.70],
+#    columns=["lat", "lon"]
+#    )
 
 ###マップを表示
 #st.map(df2)
