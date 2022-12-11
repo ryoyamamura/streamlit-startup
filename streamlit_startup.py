@@ -14,7 +14,7 @@ from PIL import Image
 import time
 
 ###タイトルを表示
-st.title('streamlit超入門')
+# st.title('streamlit超入門')
 
 ###文字を入力
 #st.write('DataFrame')
@@ -37,17 +37,17 @@ st.title('streamlit超入門')
 ###streamlitチュートリアルの display data で様々なデータの表示方法を学べる
 
 ###マークダウン記法でテキストを入力する
-"""
-# 章
-## 節
-### 項
+# """
+# # 章
+# ## 節
+# ### 項
 
-```python
-import streamlit as st
-import numpy as np
-import pandas as pd
-```
-"""
+# ```python
+# import streamlit as st
+# import numpy as np
+# import pandas as pd
+# ```
+# """
 
 ###(20行×3列）の乱数のデータ表を作成
 #df1 = pd.DataFrame(
@@ -164,7 +164,9 @@ import pandas as pd
 # if stop_button:
 #         write_count.write(f"count : {st.session_state['count']}")
 
-btn = st.button('NiziUをだす')
+btn_start = st.button('start!')
+btn_stop = st.button('stop!')
+
 image1 = Image.open('miihi.jpg')
 image2 = Image.open('mako.jpg')
 image3 = Image.open('riku.jpg')
@@ -179,17 +181,28 @@ image_list = [image1, image2, image3,
               image4, image5, image6,
               image7, image8, image9
               ]
+member_dict = {0:"みいひ", 1:"まこ", 2:"りく",
+               3:"りま", 4:"りお", 5:"にな",
+               6:"まゆか", 7:"まや", 8:"あやか"
+               }
 
 image_area = st.empty()
-cols = image_area.columns(2)
+# cols = image_area.columns(2)
 text_area = st.empty()
  
-if 'num_of_slime' not in st.session_state:
-    st.session_state['num_of_slime'] = np.random.randint(0,9)
-    cols[0].image(image_list[st.session_state['num_of_slime']])
-    text_area.write('NiziUがでてきた。')
+if 'menber' not in st.session_state:
+    st.session_state['member'] = np.random.randint(0,9)
+    image_area.image(image_list[st.session_state['member']], width=200)
+    text_area.write(f"{member_dict[st.session_state['member']]} がでてきた。")
      
-if btn:
-    st.session_state['num_of_slime'] = np.random.randint(0,9)
-    text_area.write('NiziUがでてきた。')
-    cols[0].image(image_list[st.session_state['num_of_slime']])
+while btn_start:
+    st.session_state['member'] = np.random.randint(0,9)
+    text_area.write("だれがでるかな")
+    image_area.image(image_list[st.session_state['member']], width=200)
+    time.sleep(0.01)
+    if btn_stop:
+        break
+
+if btn_stop:
+    image_area.image(image_list[st.session_state['member']], width=200)
+    text_area.write(f"{member_dict[st.session_state['member']]} がでてきた。")
