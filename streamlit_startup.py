@@ -5,11 +5,12 @@
 
 ###streamlit docs（右側のメニューからアクセス可能）にチュートリアルがある
 ###参考URL：https://docs.streamlit.io
+###ターミナルでstreamlit run ~~~.py（実行したいpythonファイル名）でWeb画面起動
 
 import streamlit as st
-#import numpy as np
+import numpy as np
 #import pandas as pd
-#from PIL import Image
+from PIL import Image
 import time
 
 ###タイトルを表示
@@ -122,15 +123,73 @@ import pandas as pd
 
 
 ###プログレスバー
-"start!!"
-latest_iteraction = st.empty()
-bar = st.progress(0)
+# "start!!"
+# latest_iteraction = st.empty()
+# bar = st.progress(0)
 
-for i in range(100):
-    latest_iteraction.text(f"Iteration {i+1}")
-    bar.progress(i+1)
-    time.sleep(0.05)
+# for i in range(100):
+#     latest_iteraction.text(f"Iteration {i+1}")
+#     bar.progress(i+1)
+#     time.sleep(0.05)
     
-"Done!!!"
+# "Done!!!"
 
 
+###テストコード
+"""
+## テストコード開始！
+"""
+
+# dict = {1:"Image1", 2:"Image2", 3:"Image3", 
+#         4:"Image4", 5:"Image5", 6:"Image6", 
+#         7:"Image7", 8:"Image8", 9:"Image9"
+#         }
+
+# button_area = st.empty()
+# col = button_area.columns(5)
+# start_button = col[0].button(label="start!")
+# stop_button = col[1].button(label="stop!")
+
+# write_count = st.empty()
+# if "count" not in st.session_state:
+#         st.session_state["count"] = 1
+
+# while start_button:
+#     write_count.write(f"count : {st.session_state['count']}")
+#     st.session_state["count"] += 1
+#     time.sleep(1)
+#     if stop_button:
+#         break
+
+# if stop_button:
+#         write_count.write(f"count : {st.session_state['count']}")
+
+btn = st.button('NiziUをだす')
+image1 = Image.open('miihi.jpg')
+image2 = Image.open('mako.jpg')
+image3 = Image.open('riku.jpg')
+image4 = Image.open('rima.jpg')
+image5 = Image.open('rio.jpg')
+image6 = Image.open('nina.jpg')
+image7 = Image.open('mayuka.jpg')
+image8 = Image.open('maya.jpg')
+image9 = Image.open('ayaka.jpg')
+
+image_list = [image1, image2, image3,
+              image4, image5, image6,
+              image7, image8, image9
+              ]
+
+image_area = st.empty()
+cols = image_area.columns(2)
+text_area = st.empty()
+ 
+if 'num_of_slime' not in st.session_state:
+    st.session_state['num_of_slime'] = np.random.randint(0,9)
+    cols[0].image(image_list[st.session_state['num_of_slime']])
+    text_area.write('NiziUがでてきた。')
+     
+if btn:
+    st.session_state['num_of_slime'] = np.random.randint(0,9)
+    text_area.write('NiziUがでてきた。')
+    cols[0].image(image_list[st.session_state['num_of_slime']])
